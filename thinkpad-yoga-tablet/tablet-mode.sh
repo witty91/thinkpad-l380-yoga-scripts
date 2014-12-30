@@ -1,24 +1,23 @@
 #!/bin/bash
+# When converted to tablet, switch off touchpad, trackpoint, and launch onboard
+# Since opening and closing tabletmode is signaled by the same ACPI event, the script toggles parameters.
+#
+# https://github.com/admiralakber/thinkpad-yoga-scripts
+#
+# Acknowledgements:
+# Modified from source: djahma - https://forum.manjaro.org/index.php?topic=9671.0
+# and oggy-/thinkpad-yoga-rotate
 
-# Note: xrandr needs to execute in the context of the X server
+export XAUTHORITY=`ls -1 /home/*/.Xauthority | head -n 1`
+export DISPLAY=":`ls -1 /tmp/.X11-unix/ | sed -e s/^X//g | head -n 1`"
 
-# Find the user running the X server
-user="$(who -u | grep -F '(:0)' | head -n 1 | awk '{print $1}')"
-
-# A convenience function to run a command in the X server context
-with_display() { DISPLAY=:0 su -c "$(printf "%q " "$@")" "$user"; }
-
-# As the same ACPI event is currently emitted for both going in and out
-# of the tablet mode, we need to toggle the orientation
-
-# Figure out the current rotation:
-current=`with_display xrandr -q --verbose | grep eDP1 | grep -o -E 'left|normal' | head -1`
-
-
-# Set the next orientation
-case $current in
-    normal)      next=left;;
-    left)        next=normal;;
-esac
-
-with_display xrandr -o $next
+touchpad=$(xinput list-props "SynPS/2 Synaptics TouchPad" | grep "Device Enabled" | awk -F ":" '{print $2}')
+if [ $touchpad -eq 1 ]; then
+	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+	xinput --set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
+	sudo -b -u \#1000 onboard
+else
+	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 1
+	xinput --set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 1
+	killall onboard
+fi
