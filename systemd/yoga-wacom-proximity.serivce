@@ -2,8 +2,9 @@
 Description=[ThinkPad Yoga] Wacom digitizer proximity detection
 
 [Service]
-Type=oneshot
-ExecStart=/opt/thinkpad-yoga-scripts/wacom/thinkpad-yoga-prox.sh
+Type=forking
+ExecStart=/usr/bin/env bash /opt/thinkpad-yoga-scripts/wacom/thinkpad-yoga-prox.sh
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
