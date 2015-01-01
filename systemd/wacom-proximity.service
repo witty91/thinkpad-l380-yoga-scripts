@@ -1,5 +1,6 @@
 [Unit]
 Description=[ThinkPad Yoga] Wacom digitizer proximity detection
+After=lightdm.service
 
 [Service]
 Type=simple
