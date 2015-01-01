@@ -1,6 +1,7 @@
 [Unit]
 Description=[ThinkPad Yoga] Rotation with accelerometer
-After=lightdm.service
+Requires=display-manager.service
+After=display-manager.service
 
 [Service]
 Type=simple
