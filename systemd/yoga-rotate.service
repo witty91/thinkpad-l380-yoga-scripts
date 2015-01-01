@@ -2,8 +2,7 @@
 Description=[ThinkPad Yoga] Rotation with accelerometer
 
 [Service]
-Type=forking
-EnvironmentFile=/etc/conf.d/yoga-rotate.conf
+Type=simple
 ExecStart=/usr/bin/env python2 /opt/thinkpad-yoga-scripts/rotate/thinkpad-rotate.py
 KillMode=process
 

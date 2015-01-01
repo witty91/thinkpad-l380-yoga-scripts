@@ -2,7 +2,7 @@
 Description=[ThinkPad Yoga] Wacom digitizer proximity detection
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/bin/bash /opt/thinkpad-yoga-scripts/wacom/thinkpad-yoga-prox.sh
 KillMode=process
 

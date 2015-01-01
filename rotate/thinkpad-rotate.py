@@ -36,7 +36,11 @@ else:
     sys.exit(1)
 
 
-devices = check_output(['xinput', '--list', '--name-only']).splitlines()
+env = {}
+env['XAUTHORITY'] = check_output(['ls -1 /home/*/.Xauthority | head -n 1'],shell=True).strip()
+env['DISPLAY'] = check_output(['echo ":`ls -1 /tmp/.X11-unix/ | sed -e s/^X//g | head -n 1`"'],shell=True).strip()
+
+devices = check_output(['xinput', '--list', '--name-only'],env=env).splitlines()
 
 touchscreen_names = ['touchscreen']
 touchscreens = [i for i in devices if any(j in i.lower() for j in touchscreen_names)]
@@ -67,23 +71,19 @@ STATES = [
 
 def rotate(state):
     s = STATES[state]
-    check_call(['xrandr', '-o', s['rot']],shell=True)
+    check_call(['xrandr', '-o', s['rot']],env=env)
     for dev in touchscreens if disable_touchpads else (touchscreens + touchpads):
         check_call([
             'xinput', 'set-prop', dev,
             'Coordinate Transformation Matrix',
-        ] + s['coord'].split(),shell=True)
+        ] + s['coord'].split(),env=env)
     for dev in wacoms:
         check_call([
             'xsetwacom','set', dev,
-            'rotate',s['pen']],shell=True)
+            'rotate',s['pen']],env=env)
     if disable_touchpads:
         for dev in touchpads:
-            check_call(['xinput', s['touchpad'], dev],shell=True)
-            #print 'Touchpad/Trackpoint:',s['touchpad']
-    #print 'Rotated screen:',s['rot']
-    #print 'Rotated pens:',s['pen']
-
+            check_call(['xinput', s['touchpad'], dev],env=env)
 
 def read_accel(fp):
     fp.seek(0)
