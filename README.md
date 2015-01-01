@@ -12,10 +12,19 @@ Tested on Arch Linux with MATE Desktop Environment.
 - Disabling of Clickpad and TrackPoint when moving to tablet mode
 
 # TODO:
-- Write the systemd units and PKGBUILD
+- Write PKGBUILD
 
 # Dependencies
 - acpid
 - xinput
 - xsetwacom
 - onboard (optional for onscreen keyboard)
+
+# Manual installation
+
+sudo -s
+git clone https://github.com/admiralakber/thinkpad-yoga-scripts /opt/thinkpad-yoga-scripts
+cp /opt/thinkpad-yoga-scripts/systemd/* /etc/systemd/system/*
+cp /opt/thinkpad-yoga-scripts/tablet/tablet-mode /etc/acpi/events
+cp /opt/thinkpad-yoga-scripts/tablet/tablet-mode.sh /etc/acpi/actions
+exit
