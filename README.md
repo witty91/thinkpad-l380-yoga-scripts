@@ -12,12 +12,13 @@ Tested on Arch Linux with MATE Desktop Environment.
 - Disabling of Clickpad and TrackPoint when moving to tablet mode
 
 # TODO:
-- Write PKGBUILD
+- Test on different desktop environments
 
 # Dependencies
+- xrandr
 - acpid
 - xinput
-- xsetwacom
+- xsetwacom (optional for wacom rotation)
 - onboard (optional for onscreen keyboard)
 
 # Manual installation
