@@ -20,7 +20,6 @@ import sys
 from subprocess import check_call, check_output
 from glob import glob
 
-
 def bdopen(fname):
     return open(op.join(basedir, fname))
 
@@ -68,19 +67,19 @@ STATES = [
 
 def rotate(state):
     s = STATES[state]
-    check_call(['xrandr', '-o', s['rot']])
+    check_call(['xrandr', '-o', s['rot']],shell=True)
     for dev in touchscreens if disable_touchpads else (touchscreens + touchpads):
         check_call([
             'xinput', 'set-prop', dev,
             'Coordinate Transformation Matrix',
-        ] + s['coord'].split())
+        ] + s['coord'].split(),shell=True)
     for dev in wacoms:
         check_call([
             'xsetwacom','set', dev,
-            'rotate',s['pen']])
+            'rotate',s['pen']],shell=True)
     if disable_touchpads:
         for dev in touchpads:
-            check_call(['xinput', s['touchpad'], dev])
+            check_call(['xinput', s['touchpad'], dev],shell=True)
             #print 'Touchpad/Trackpoint:',s['touchpad']
     #print 'Rotated screen:',s['rot']
     #print 'Rotated pens:',s['pen']

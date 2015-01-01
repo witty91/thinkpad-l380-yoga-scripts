@@ -40,6 +40,7 @@ package() {
   # ThinkPad Yoga Systemd Services
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
   cp systemd/*.service "$pkgdir/usr/lib/systemd/system/"
+  mkdir -p "$pkgdir/etc/conf.d/"
   cp systemd/*.conf "$pkgdir/etc/conf.d/"
 
   # Install license

@@ -3,6 +3,9 @@
 # Deactivate touchscreen when wacom pen is in proximity
 # Activate touchscreen when wacom pen gets out
 
+export XAUTHORITY=`ls -1 /home/*/.Xauthority | head -n 1`
+export DISPLAY=":`ls -1 /tmp/.X11-unix/ | sed -e s/^X//g | head -n 1`"
+
 sleeptime="0.3s"
 lastPenPosition="Proximity=Out"
 while true
