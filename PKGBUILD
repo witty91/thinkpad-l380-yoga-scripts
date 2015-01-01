@@ -15,7 +15,7 @@ optdepends=(
 	'xf86-input-wacom: for digitizer support'
 	)
 md5sums=('SKIP')
-
+makedepends=('git')
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
