@@ -1,7 +1,7 @@
 thinkpad-yoga-scripts
 =====================
 
-A collection of scripts and systemd units to restore tablet functionality of the Lenovo ThinkPad Yoga S1.
+A collection of scripts and systemd units to restore functionality of the Lenovo ThinkPad Yoga S1.
 
 Tested on Arch Linux with MATE Desktop Environment.
 
