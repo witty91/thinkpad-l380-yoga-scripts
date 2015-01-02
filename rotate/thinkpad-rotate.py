@@ -19,6 +19,7 @@ from os import path as op
 import sys
 from subprocess import check_call, check_output
 from glob import glob
+from os import environ
 
 def bdopen(fname):
     return open(op.join(basedir, fname))
@@ -36,9 +37,7 @@ else:
     sys.exit(1)
 
 
-env = {}
-env['XAUTHORITY'] = check_output(['ls -1 /home/*/.Xauthority | head -n 1'],shell=True).strip()
-env['DISPLAY'] = check_output(['echo ":`ls -1 /tmp/.X11-unix/ | sed -e s/^X//g | head -n 1`"'],shell=True).strip()
+env = environ.copy()
 
 devices = check_output(['xinput', '--list', '--name-only'],env=env).splitlines()
 

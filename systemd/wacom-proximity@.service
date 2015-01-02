@@ -8,6 +8,8 @@ After=display-manager.service
 Type=simple
 ExecStart=/usr/bin/bash /opt/thinkpad-yoga-scripts/wacom/thinkpad-yoga-prox.sh
 KillMode=process
+User=%i
+Environment="DISPLAY=:0" "XAUTHORITY=/home/%i/.Xauthority"
 
 [Install]
 WantedBy=multi-user.target
