@@ -9,6 +9,9 @@ ExecStart=/usr/bin/env python2 /opt/thinkpad-yoga-scripts/rotate/thinkpad-rotate
 KillMode=process
 User=%i
 Environment="DISPLAY=:0" "XAUTHORITY=/home/%i/.Xauthority"
+Restart=on-failure
+RestartSec=5
+
 
 [Install]
 WantedBy=multi-user.target
