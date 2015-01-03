@@ -1,23 +1,19 @@
 #!/bin/bash
-# When converted to tablet, switch off touchpad, trackpoint, and launch onboard
-# Since opening and closing tabletmode is signaled by the same ACPI event, the script toggles parameters.
-#
+# 
 # https://github.com/admiralakber/thinkpad-yoga-scripts
 #
-# Acknowledgements:
-# Modified from source: djahma - https://forum.manjaro.org/index.php?topic=9671.0
-# and oggy-/thinkpad-yoga-rotate
+# Set tablet/laptop scancodes on ThinkPad Yoga S1 to NoSymbol
+# keycodes then run xbindkeys as the appropriate user with
+# a custom configuration file.
+# 
+# USAGE: tablet-mode.sh username
 
-export XAUTHORITY=`ls -1 /home/*/.Xauthority | head -n 1`
-export DISPLAY=":`ls -1 /tmp/.X11-unix/ | sed -e s/^X//g | head -n 1`"
+config='/opt/thinkpad-yoga-scripts/tablet/xbindkeysrc'
+user="$(who -u | grep -F \(${DISPLAY}\) | head -n 1 | awk '{print $1}')"
 
-touchpad=$(xinput list-props "SynPS/2 Synaptics TouchPad" | grep "Device Enabled" | awk -F ":" '{print $2}')
-if [ $touchpad -eq 1 ]; then
-	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-	xinput --set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
-	sudo -b -u \#1000 onboard
-else
-	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 1
-	xinput --set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 1
-	killall onboard
-fi
+# Set scancode to keycodes
+setkeycodes e058 85 # Tablet mode
+setkeycodes e059 89 # Laptop mode
+
+# Start xbindkeys with configuration file
+su $user -c "xbindkeys -f $config"

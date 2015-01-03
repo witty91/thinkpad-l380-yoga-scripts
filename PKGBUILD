@@ -9,7 +9,7 @@ url="https://github.com/admiralakber/thinkpad-yoga-scripts"
 source=('thinkpad-yoga-scripts::git+https://github.com/admiralakber/thinkpad-yoga-scripts')
 license=('GPL3')
 arch=('any')
-depends=('xorg-xrandr' 'acpid' 'xorg-xinput')
+depends=('xorg-xrandr' 'xorg-xinput' 'xbindkeys' 'kbd' 'systemd' 'gawk')
 optdepends=(
 	'onboard: onscreen keyboard'
 	'xf86-input-wacom: for digitizer support'
@@ -24,18 +24,14 @@ pkgver() {
 package() {
   cd $srcdir/$_gitname
 
-  # Disable touchpad when moving to tablet mode
-  mkdir -p "$pkgdir/etc/acpi/events"
-  install -m 644 tablet/tablet-mode "$pkgdir/etc/acpi/events"
-  mkdir -p "$pkgdir/etc/acpi/actions"
-  install -m 755 tablet/tablet-mode.sh "$pkgdir/etc/acpi/actions"
-
-  # Other scripts into /opt
+  # Install scripts into /opt
   mkdir -p "$pkgdir/opt/$_gitname"
   ## Rotate scripts
   cp -r rotate "$pkgdir/opt/$_gitname"
   ## Wacom scripts
   cp -r wacom "$pkgdir/opt/$_gitname"
+  ## Tablet mode
+  cp -r tablet $pkgdir/opt/$_gitname"
 
   # ThinkPad Yoga Systemd Services
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
