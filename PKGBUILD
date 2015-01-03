@@ -2,7 +2,7 @@
 
 pkgname='thinkpad-yoga-scripts-git'
 _gitname='thinkpad-yoga-scripts'
-pkgver=2015-01-01
+pkgver=20150103
 pkgrel=1
 pkgdesc='A collection of scripts and systemd services for tablet functionality of the ThinkPad Yoga'
 url="https://github.com/admiralakber/thinkpad-yoga-scripts"
