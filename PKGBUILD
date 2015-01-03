@@ -3,7 +3,7 @@
 pkgname='thinkpad-yoga-scripts-git'
 _gitname='thinkpad-yoga-scripts'
 pkgver=20150103
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of scripts and systemd services for tablet functionality of the ThinkPad Yoga'
 url="https://github.com/admiralakber/thinkpad-yoga-scripts"
 source=('thinkpad-yoga-scripts::git+https://github.com/admiralakber/thinkpad-yoga-scripts')
@@ -16,6 +16,8 @@ optdepends=(
 	)
 md5sums=('SKIP')
 makedepends=('git')
+install=$pkgname.install
+
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
