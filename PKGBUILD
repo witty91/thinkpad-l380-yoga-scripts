@@ -31,7 +31,7 @@ package() {
   ## Wacom scripts
   cp -r wacom "$pkgdir/opt/$_gitname"
   ## Tablet mode
-  cp -r tablet $pkgdir/opt/$_gitname"
+  cp -r tablet "$pkgdir/opt/$_gitname"
 
   # ThinkPad Yoga Systemd Services
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
