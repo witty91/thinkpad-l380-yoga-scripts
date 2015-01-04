@@ -27,8 +27,9 @@ Tested on Arch Linux with MATE Desktop Environment.
 - xrandr
 - xinput
 - xbindkeys
-- kbd
+- kbd (for setkeycodes)
 - systemd
+- gawk
 - xsetwacom (optional for wacom rotation)
 - onboard (optional for onscreen keyboard)
 
@@ -36,7 +37,7 @@ Tested on Arch Linux with MATE Desktop Environment.
 
     sudo -s
     git clone https://github.com/admiralakber/thinkpad-yoga-scripts /opt/thinkpad-yoga-scripts
-    cp systemd/* /usr/lib/systemd/system
+    cp /opt/thinkpad-yoga-scripts/systemd/* /usr/lib/systemd/system/
 
     systemctl start wacom-proximity@username.service
     systemctl start yoga-rotate@username.service
