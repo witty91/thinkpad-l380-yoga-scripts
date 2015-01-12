@@ -14,6 +14,15 @@ Modified from source:
 https://gist.githubusercontent.com/ei-grad/4d9d23b1463a99d24a8d/raw/rotate.py
 
 """
+
+### BEGIN Configurables
+
+rotate_pens = False # Set false if your DE rotates pen for you
+disable_touchpads = False # Don't use in conjunction with tablet-mode
+
+### END Configurables
+
+
 from time import sleep
 from os import path as op
 import sys
@@ -46,9 +55,6 @@ touchscreens = [i for i in devices if any(j in i.lower() for j in touchscreen_na
 
 wacoms = [i for i in devices if any(j in i.lower() for j in ['wacom'])]
 
-# WARNING: Don't use disable_touchpads in conjunction with the ACPI hook.
-disable_touchpads = False
-
 touchpad_names = ['touchpad', 'trackpoint']
 touchpads = [i for i in devices if any(j in i.lower() for j in touchpad_names)]
 
@@ -76,10 +82,11 @@ def rotate(state):
             'xinput', 'set-prop', dev,
             'Coordinate Transformation Matrix',
         ] + s['coord'].split(),env=env)
-    for dev in wacoms:
-        check_call([
-            'xsetwacom','set', dev,
-            'rotate',s['pen']],env=env)
+    if rotate_pens:
+        for dev in wacoms:
+            check_call([
+                'xsetwacom','set', dev,
+                'rotate',s['pen']],env=env)
     if disable_touchpads:
         for dev in touchpads:
             check_call(['xinput', s['touchpad'], dev],env=env)

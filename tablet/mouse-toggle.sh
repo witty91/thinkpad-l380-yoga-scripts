@@ -8,9 +8,6 @@
 # https://github.com/admiralakber/thinkpad-yoga-scripts
 # Author: AdmiralAkber
 
-#export XAUTHORITY=`ls -1 /home/*/.Xauthority | head -n 1`
-#export DISPLAY=":`ls -1 /tmp/.X11-unix/ | sed -e s/^X//g | head -n 1`"
-
 case "$1" in
     off)
 	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0

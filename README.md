@@ -9,7 +9,8 @@ automated with use of the inbuilt accelerometer. Also, acpid is not
 used in order to toggle between tablet mode but rather binding to the
 inbuilt switches.
 
-Tested on Arch Linux with MATE Desktop Environment.
+Tested on Arch Linux with MATE, KDE 4.14, Gnome 3.14. See
+customization.
 
 # Scripts should fix:
 
@@ -19,6 +20,25 @@ Tested on Arch Linux with MATE Desktop Environment.
 - Disabling of Touchscreen with proximity of Wacom digitizer
 
 - Disabling of Clickpad and TrackPoint when moving to tablet mode
+
+# Usage/Customization:
+
+Assuming installed as per the PKGBUILD
+
+Depending whether or not your DE rotates the Wacom orientation with
+the screen automatically edit the following file accordingly:
+
+    /opt/thinkpad-yoga-scripts/rotate/thinkpad-rotate.py
+
+If you want to use an onscreen keyboard other than onboard, or disable
+opening of any keyboard when moving into tablet mode edit:
+
+    /opt/thinkpad-yoga-scripts/tablet/mouse-toggle.sh
+
+If your home directory is not in /home/<username> or your .Xauthority
+file is located somewhere other than your home directory you will need
+to edit the systemd modules. Likewise if your tablets display is not
+:0.
 
 # TODO:
 - Test on different desktop environments (You can help!)
