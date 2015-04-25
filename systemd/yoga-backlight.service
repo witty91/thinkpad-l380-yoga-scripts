@@ -1,0 +1,10 @@
+[Unit]
+Description=[ThinkPad Yoga] Automatic backlight adjustment
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env python2 /opt/thinkpad-yoga-scripts/backlight/thinkpad-backlight.py
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
