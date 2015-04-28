@@ -62,4 +62,5 @@ to edit the systemd modules. Likewise if your tablets display is not
     systemctl start wacom-proximity@username.service
     systemctl start yoga-rotate@username.service
     systemctl start yoga-tablet.service
+    systemctl start yoga-backlight.service
     
