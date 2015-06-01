@@ -9,7 +9,7 @@ automated with use of the inbuilt accelerometer. Also, acpid is not
 used in order to toggle between tablet mode but rather binding to the
 inbuilt switches.
 
-Tested on Arch Linux with MATE, KDE 4.14, Gnome 3.14. See
+Tested on Arch Linux with MATE, KDE 4.14, Gnome 3.14+. See
 customization.
 
 # Scripts should fix:
@@ -58,6 +58,8 @@ to edit the systemd modules. Likewise if your tablets display is not
     sudo -s
     git clone https://github.com/admiralakber/thinkpad-yoga-scripts /opt/thinkpad-yoga-scripts
     cp /opt/thinkpad-yoga-scripts/systemd/* /usr/lib/systemd/system/
+
+On Ubuntu 15.04, you may need to create the above directory.
 
     systemctl start wacom-proximity@username.service
     systemctl start yoga-rotate@username.service
