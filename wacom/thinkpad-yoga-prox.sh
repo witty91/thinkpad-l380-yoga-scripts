@@ -6,12 +6,18 @@
 sleeptime="0.3s"
 lastPenPosition="Proximity=Out"
 
-if xinput --list | grep -q "ELAN Touchscreen"
-then
-    touchscreen="ELAN Touchscreen"
-else
-    touchscreen="SYNAPTICS Synaptics Touch Digitizer V04"
-fi
+while [ -z "$touchscreen" ]
+do
+    for touchscreen_name in "SYNAPTICS Synaptics Touch Digitizer V04" "ELAN Touchscreen"
+    do
+        if xinput --list | grep -q "$touchscreen_name"
+        then
+            touchscreen="$touchscreen_name"
+            break
+        fi
+    done
+    sleep $sleeptime
+done
 
 while true
 do 
