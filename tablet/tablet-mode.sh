@@ -16,4 +16,4 @@ setkeycodes e058 85 # Tablet mode
 setkeycodes e059 89 # Laptop mode
 
 # Start xbindkeys with configuration file
-su $user -c "xbindkeys -f $config"
+su $user -c "xbindkeys -f $config -n"
