@@ -1,15 +1,17 @@
-# Maintainer: AdmiralAkber
+# Maintainer: ffejery
 
-pkgname='thinkpad-yoga-scripts-git'
-_gitname='thinkpad-yoga-scripts'
-pkgver=20150103
-pkgrel=2
-pkgdesc='A collection of scripts and systemd services for tablet functionality of the ThinkPad Yoga'
-url="https://github.com/admiralakber/thinkpad-yoga-scripts"
-source=('thinkpad-yoga-scripts::git+https://github.com/admiralakber/thinkpad-yoga-scripts')
+pkgname='thinkpad-l380-yoga-scripts-git'
+_gitname='thinkpad-l380-yoga-scripts'
+pkgver=20180627
+pkgrel=1
+pkgdesc='A collection of scripts and systemd services for tablet functionality of the ThinkPad L380 Yoga, based onthe original by AdmiralAkber'
+url="https://github.com/ffejery/thinkpad-l380-yoga-scripts"
+source=('thinkpad-l380-yoga-scripts::git+https://github.com/ffejery/thinkpad-l380-yoga-scripts')
 license=('GPL3')
 arch=('any')
 depends=('xorg-xrandr' 'xorg-xinput' 'xbindkeys' 'kbd' 'systemd' 'gawk')
+conflicts=('thinkpad-yoga-scripts-git')
+provides=('thinkpad-yoga-scripts-git')
 optdepends=(
 	'onboard: onscreen keyboard'
 	'xf86-input-wacom: for digitizer support'
