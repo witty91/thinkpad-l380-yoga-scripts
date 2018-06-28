@@ -5,6 +5,9 @@
 #
 # Must be run as user running X11.
 #
+# https://github.com/ffejery/thinkpad-l380-yoga-scripts
+#
+# Originally from AdmiralAkber:
 # https://github.com/admiralakber/thinkpad-yoga-scripts
 # Author: AdmiralAkber
 

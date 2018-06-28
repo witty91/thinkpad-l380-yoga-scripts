@@ -1,5 +1,10 @@
 #!/bin/bash
 # 
+#
+# https://github.com/ffejery/thinkpad-l380-yoga-scripts
+#
+# Originally from AdmiralAkber:
+
 # https://github.com/admiralakber/thinkpad-yoga-scripts
 #
 # Set tablet/laptop scancodes on ThinkPad Yoga S1 to NoSymbol

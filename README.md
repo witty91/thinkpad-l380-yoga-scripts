@@ -3,7 +3,7 @@ since I had to make the edits to AdmiralAkber's original code to get my
 own laptop working, I've posted them here to help others. This works
 for me - please let me know if you encounter any issues.
 
-For the moment since I have nothing to add to add to it, the following
+For the moment since I have nothing to add to it, the following
 is the original README.
 
 Share & Enjoy,

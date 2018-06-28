@@ -5,6 +5,12 @@ thinkpad-rotate.py
 Rotates any detected screen, wacom digitizers, touchscreens,
 touchpad/trackpoint based on orientation gathered from accelerometer. 
 
+Tested with Lenovo ThinkPad L380 Yoga
+
+https://github.com/ffejery/thinkpad-l380-yoga-scripts
+
+Originally from AdmiralAkber:
+
 Tested with Lenovo Thinkpad Yoga S1
 
 https://github.com/admiralakber/thinkpad-yoga-scripts
