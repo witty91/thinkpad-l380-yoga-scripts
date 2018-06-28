@@ -10,13 +10,13 @@
 
 case "$1" in
     off)
-	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-	xinput --set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
+	xinput --set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 0
+	xinput --set-prop "ETPS/2 Elantech TrackPoint" "Device Enabled" 0
 	sudo -b -u \#1000 onboard
 	;;
     on)
-	xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 1
-	xinput --set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 1
+	xinput --set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1
+	xinput --set-prop "ETPS/2 Elantech TrackPoint" "Device Enabled" 1
 	killall onboard
 	;;
 esac
