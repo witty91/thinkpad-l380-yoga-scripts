@@ -39,12 +39,12 @@ Assuming installed as per the PKGBUILD
 Depending whether or not your DE rotates the Wacom orientation with
 the screen automatically edit the following file accordingly:
 
-    /opt/thinkpad-yoga-scripts/rotate/thinkpad-rotate.py
+    /opt/thinkpad-l380-yoga-scripts/rotate/thinkpad-rotate.py
 
 If you want to use an onscreen keyboard other than onboard, or disable
 opening of any keyboard when moving into tablet mode edit:
 
-    /opt/thinkpad-yoga-scripts/tablet/mouse-toggle.sh
+    /opt/thinkpad-l380-yoga-scripts/tablet/mouse-toggle.sh
 
 If your home directory is not in /home/<username> or your .Xauthority
 file is located somewhere other than your home directory you will need
@@ -67,8 +67,8 @@ to edit the systemd modules. Likewise if your tablets display is not
 # Manual installation
 
     sudo -s
-    git clone https://github.com/admiralakber/thinkpad-yoga-scripts /opt/thinkpad-yoga-scripts
-    cp /opt/thinkpad-yoga-scripts/systemd/* /usr/lib/systemd/system/
+    git clone https://github.com/ffejery/thinkpad-l380-yoga-scripts /opt/thinkpad-l380-yoga-scripts
+    cp /opt/thinkpad-l380-yoga-scripts/systemd/* /usr/lib/systemd/system/
 
 On Ubuntu 15.04, you may need to create the above directory.
 

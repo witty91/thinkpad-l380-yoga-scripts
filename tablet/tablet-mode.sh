@@ -13,7 +13,7 @@
 # 
 # USAGE: tablet-mode.sh username
 
-config='/opt/thinkpad-yoga-scripts/tablet/xbindkeysrc'
+config='/opt/thinkpad-l380-yoga-scripts/tablet/xbindkeysrc'
 user="$(who -u | grep -F \(${DISPLAY}\) | head -n 1 | awk '{print $1}')"
 
 # Set scancode to keycodes
