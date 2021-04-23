@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 """
 thinkpad-rotate.py
 
@@ -54,8 +54,8 @@ else:
 
 env = environ.copy()
 
-devices = check_output(['xinput', '--list', '--name-only'],env=env).splitlines()
-
+devices = check_output(['xinput', '--list', '--name-only'],env=env).decode()
+devices = devices.split('\n')
 touchscreen_names = ['touchscreen', 'touch digitizer']
 touchscreens = [i for i in devices if any(j in i.lower() for j in touchscreen_names)]
 
